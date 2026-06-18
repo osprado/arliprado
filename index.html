@@ -416,6 +416,94 @@ footer .fn{
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:0.01ms !important;transition-duration:0.01ms !important}
 }
+
+/* ══ ÁRVORE GENEALÓGICA ══ */
+.tree-container {
+  max-width: 900px;
+  margin: 40px auto 20px;
+  padding: 24px 16px;
+  background: var(--card);
+  border: 1px solid var(--divider);
+  border-radius: 8px;
+  text-align: center;
+}
+.tree-level {
+  margin-bottom: 28px;
+  position: relative;
+}
+.tree-level:last-child {
+  margin-bottom: 0;
+}
+.tree-level-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 12px;
+}
+.tree-group {
+  display: flex;
+  justify-content: center;
+  gap: 8px; /* Reduzido para aproximar os ícones */
+  flex-wrap: wrap;
+}
+.tree-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 82px; /* Reduzido para caberem todos na mesma linha no desktop */
+  text-align: center;
+}
+.tree-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(59,130,196,0.12);
+  background: var(--surface);
+  margin-bottom: 6px;
+  transition: transform 0.2s;
+}
+.tree-member:hover .tree-avatar {
+  transform: scale(1.05);
+}
+.tree-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.tree-member.highlight .tree-avatar {
+  border-color: var(--gold-dim);
+  box-shadow: 0 2px 8px rgba(154, 111, 46, 0.25);
+}
+.tree-member.highlight .tree-name {
+  color: var(--gold);
+  font-weight: 700;
+}
+
+/* Linhas conectoras para Desktop */
+@media(min-width: 768px) {
+  .tree-group {
+    flex-wrap: nowrap; /* Garante linha única para os irmãos no desktop */
+  }
+  .tree-level::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    width: 1px;
+    height: 16px;
+    background: var(--divider);
+  }
+  .tree-level:last-child::after {
+    display: none;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -443,7 +531,7 @@ footer .fn{
     <a href="https://www.familysearch.org/pt/tree/person/GP63-31H" target="_blank" rel="noopener">🌳 FamilySearch</a>
   </nav>
   <div class="hero-acervo">
-    Mais fotos, vídeos, áudios e lembranças da Arli estão disponíveis no acervo digital. <a href="#">Clique aqui para acessar</a>.
+    Mais fotos, vídeos, áudios e lembranças da Arli estão disponíveis no acervo digital. <br><a href="#">Clique aqui para acessar</a>.
   </div>
 </header>
 
@@ -511,7 +599,7 @@ footer .fn{
           <div class="topic-body">
             <div class="topic-body-content">
               <div class="topic-body-inner">
-                <p class="topic-full">Sua trajetória profissional foi marcada pela dedicação, capacidade de adaptação e espírito empreendedor. Durante a infância e a adolescência, trabalhou na roça ao lado do pai e dos irmãos, contribuindo para o sustento da família. Ainda jovem, também atuou por um período em uma fábrica de bombinhas e, aos 16 anos, iniciou seu trabalho na APAE. Ao mudar-se para São Paulo na juventude em busca de novas oportunidades, ingressou no mercado de trabalho e atuou em empresas como Sheik, onde conheceu o futuro pai de seus filhos, Samuel. Trabalhou também na empresa La Violetera. Após o nascimento do terceiro filho, optou por dedicar-se integralmente à família, assumindo com amor e responsabilidade o papel de dona de casa. Em 2001, deu mais um importante passo em sua trajetória ao cofundar a empresa de cobrança empresarial Truste Assessoria Empresarial. Após a dissolução do negócio, retornou ao mercado de trabalho em 2004, atuando como auxiliar administrativa na Barra Bonita. Reconhecida por sua excelente comunicação, dedicação e facilidade em lidar com as pessoas, mais tarde encontrou uma nova vocação como cuidadora de idosos. Exerceu essa função com profundo carinho, respeito e comprometimento, deixando sua marca na vida de muitas pessoas, entre elas Tetê.</p>
+                <p class="topic-full">Sua trajetória profissional foi marcada pela dedicação, capacidade de adaptação e espírito empreendedor. Durante a infância e a adolescência, trabalhou na roça ao lado do pai e dos irmãos, contribuindo para o sustento da família. Ainda jovem, também atuou por um período em uma fábrica de bombinhas e, aos 16 anos, iniciou seu trabalho na APAE. Ao mudar-se para São Paulo na juventude em busca de novas oportunidades, ingressou no mercado de trabalho e atuou em empresas como Sheik, onde conheceu o futuro pai de seus filhos, Samuel. Trabalhou também na empresa La Violetera. Após o nascimento do terceiro filho, optou por dedicar-se integralmente à família, assumindo com amor e responsabilidade o papel de dona de casa. Voltou a trabalhar de forma autônoma, realizando cobranças para a empresa Cursos MED. Em 2001, deu mais um importante passo em sua trajetória ao cofundar a empresa de cobrança empresarial Truste Assessoria Empresarial. Após a dissolução do negócio, retornou ao mercado de trabalho em 2004, atuando como auxiliar administrativa na Barra Bonita. Reconhecida por sua excelente comunicação, dedicação e facilidade em lidar com as pessoas, mais tarde encontrou uma nova vocação como cuidadora de idosos. Exerceu essa função com profundo carinho, respeito e comprometimento, deixando sua marca na vida de muitas pessoas, entre elas Tetê.</p>
               </div>
             </div>
           </div>
@@ -530,7 +618,7 @@ footer .fn{
           <div class="topic-body">
             <div class="topic-body-content">
               <div class="topic-body-inner">
-                <p class="topic-full">Carregou com dignidade a dor mais pesada que uma mãe pode conhecer: a perda de seu filho, Luis Fernando (Fefe), assassinado aos 15 anos, em 2005. Perdeu também seu pai, igualmente de forma violenta, e sua mãe, cujas ausências moldaram sua força silenciosa e sua capacidade de seguir em frente. Além do peso do luto, ela encarou de frente uma separação, apenas um ano após a morte do filho. Arli foi uma grande guerreira, mostrando às pessoas ao seu redor como se adaptar e ser feliz mesmo diante das adversidades.</p>
+                <p class="topic-full">Carregou com dignidade a dor mais pesada que uma mãe pode conhecer: a perda de seu filho, Luis Fernando (Fefe), assassinado aos 15 anos, em 2005. Perdeu também seu pai, igualmente de forma violenta, em 2013, e sua mãe, em 2019, cujas ausências moldaram sua força silenciosa e sua capacidade de seguir em frente. Além do peso do luto, ela encarou de frente uma separação, apenas um ano após a morte do filho. Arli foi uma grande guerreira, mostrando às pessoas ao seu redor como se adaptar e ser feliz mesmo diante das adversidades.</p>
               </div>
             </div>
           </div>
@@ -549,7 +637,7 @@ footer .fn{
           <div class="topic-body">
             <div class="topic-body-content">
               <div class="topic-body-inner">
-                <p class="topic-full">Arli era a pessoa mais alto-astral da família. Por onde chegava, iluminava e animava o ambiente com seu bom humor e suas piadas desbocadas, que arrancavam risadas de todos, e por vezes causavam um pequeno constrangimento nos despreparados. Era uma desbravadora, exemplo de quem aproveitava sua liberdade com a mente aberta, sendo uma pessoa à frente do seu tempo — mas sem qualquer rebeldia que prejudicasse os outros. Por esse motivo, criou seus filhos de maneira mais liberal e com muitos conselhos certeiros sobre a vida. Arli respondia sempre à altura, um espelho, se a pessoa fosse boa ela seria boa, mas se fosse sem educação ela colocar-se-ia a pessoa em seu lugar. Foi também uma pessoa extremamente dedicada à sua casa, tendo por grande parte de sua vida uma jornada dupla. Arli foi sempre proativa, decidida, prática, resoluta e independente, resolvendo tudo a que se propunha e sempre correndo atrás do que queria.</p>
+                <p class="topic-full">Arli era a pessoa mais alto-astral da família. Por onde chegava, iluminava e animava o ambiente com seu bom humor e suas piadas desbocadas, que arrancavam risadas de todos, e por vezes causavam um pequeno constrangimento nos despreparados. Era uma desbravadora, exemplo de quem aproveitava sua liberdade com a mente aberta, sendo uma pessoa à frente do seu tempo — mas sem qualquer rebeldia que prejudicasse os outros. Por esse motivo, criou seus filhos de maneira mais liberal e com muitos conselhos certeiros sobre a vida. Arli respondia sempre à altura, um espelho, se a pessoa fosse boa ela seria boa, mas se fosse sem educação ela colocava a pessoa em seu lugar. Foi também uma pessoa extremamente dedicada à sua casa, tendo por grande parte de sua vida uma jornada dupla. Arli foi sempre proativa, decidida, prática, resoluta e independente, resolvendo tudo a que se propunha e sempre correndo atrás do que queria.</p>
               </div>
             </div>
           </div>
@@ -625,7 +713,7 @@ footer .fn{
           <div class="topic-body">
             <div class="topic-body-content">
               <div class="topic-body-inner">
-                <p class="topic-full">Era muito esperta e inteligente, sempre resolvendo palavras cruzadas e caças-palavras rapidamente e vencendo jogos como Stop (também conhecido como Dedanha). Por anos assistiu novelas, assim como sua mãe, mas dizia não ter paciência para filmes. O livro que mais marcou Arli foi Violetas na Janela, de Vera Lúcia Marinzeck de Carvalho. Gostava de interagir para informar as pessoas nas redes sociais e para comprar coisas, era também ótima em pechinchar. Geria bem seu dinheiro, nunca fazendo dívidas desnecessárias. Foi também uma ótima motorista, mas não gostava de carros manuais. Adorava escutar sertanejo, em especial as músicas de Eduardo Costa. Adorava também as músicas de Roberto Carlos, que costumava ouvir em fitas cassete no rádio. Arli gostava de pregar peças nas pessoas e também gostava de dar presentes inusitados, como coisas com conotação sexual, só pela farra, para descontrair. Nas horas vagas gostava de visitar as irmãs ou ligar para elas e fofocar, mas também gostava de receber visitas.</p>
+                <p class="topic-full">Era muito esperta e inteligente, sempre resolvendo palavras cruzadas e caças-palavras rapidamente e vencendo jogos como Stop (também conhecido como Adedonha). Por anos assistiu novelas, assim como sua mãe, mas dizia não ter paciência para filmes. O livro que mais marcou Arli foi Violetas na Janela, de Vera Lúcia Marinzeck de Carvalho. Gostava de interagir para informar as pessoas nas redes sociais e para comprar coisas, era também ótima em pechinchar. Geria bem seu dinheiro, nunca fazendo dívidas desnecessárias. Foi também uma ótima motorista, mas não gostava de carros manuais. Adorava escutar sertanejo, em especial as músicas de Eduardo Costa. Na escola ela defendia suas irmãs, sempre comprando briga para protegê-las. Arli gostava de pregar peças nas pessoas e também gostava de dar presentes inusitados, como coisas com conotação sexual, só pela farra, para descontrair. Nas horas vagas gostava de visitar as irmãs ou ligar para elas e fofocar, mas também gostava de receber visitas.</p>
               </div>
             </div>
           </div>
@@ -644,7 +732,7 @@ footer .fn{
           <div class="topic-body">
             <div class="topic-body-content">
               <div class="topic-body-inner">
-                <p class="topic-full">Arli tinha o hábito mais que diário de tomar um café preto, pelando e bem açucarado, como uma boa paulista. Gostava muito de pão de queijo, de pamonha, e de pequi, como uma boa goiana-mineira. Adorava também uma Coca-Cola bem gelada. Cozinhava maravilhosamente, e seu feijão mineiro bem cremoso fazia sucesso, além de diversas outras receitas. Sendo sempre bem inventiva e criativa na cozinha, criou excelentes receitas para seu filho vegano, como o Pão Recheado com catupiry vegetal, hambúrgueres vegetais, lasanhas, nhoques e strogonoffs. Seu ponto fraco eram os bolos, que apesar de deliciosos não ficavam na textura e fofura ideal, e ela sempre lamentava.</p>
+                <p class="topic-full">Arli tinha o hábito mais que diário de tomar um café preto, pelando e bem açucarado, como uma boa paulista. Gostava muito de pão de queijo, pamonha e pequi, como uma boa goiana-mineira. Adorava também uma Coca-Cola bem gelada. Arli adorava uma vitamina de maracujá com leite, e não gostava de nada com manga. Cozinhava maravilhosamente, seu feijão mineiro bem cremoso fazia sucesso, além de diversas outras receitas. Sendo sempre bem criativa na cozinha, criou excelentes receitas para seu filho vegano, como o pão recheado com catupiry vegetal, hambúrgueres vegetais, lasanhas, nhoques e strogonoffs. Seu ponto fraco era fazer bolos, que apesar de deliciosos não ficavam na textura e fofura ideal, e ela sempre lamentava.</p>
               </div>
             </div>
           </div>
@@ -663,7 +751,7 @@ footer .fn{
           <div class="topic-body">
             <div class="topic-body-content">
               <div class="topic-body-inner">
-                <p class="topic-full">Durante a vida, Arli cultivou muitas amizades que o tempo e as circunstâncias foram afastando, mas que deixaram marcas. Alguns nomes memoráveis: Édinho, Kelly, Sandra, Vagna, Dudu, Fabiana, Chiquito e Jandira, entre tantos outros. Tinha também grande consideração pelos fiéis amigos de seu falecido filho: Rodrigo e Raphael. Arli também foi uma grande amiga de todos os seus irmãos e irmãs, sobrinhos, sobrinhas e agregados, e amou intensamente sua pequena filhinha canina Maggie. Ela foi uma mãe batalhadora, amorosa e exemplar.</p>
+                <p class="topic-full">Durante a vida, Arli cultivou muitas amizades que o tempo e as circunstâncias foram afastando, mas que deixaram marcas. Alguns nomes memoráveis: Édinho, Kelly, Sandra, Vagna, Dudu, Fabiana, Chiquito e Jandira, entre tantos outros. Tinha também grande consideração pelos fiéis amigos de seu falecido filho: Rodrigo e Raphael. Arli também foi uma grande amiga de todos os seus irmãos e irmãs, sobrinhos, sobrinhas e agregados, e amou intensamente sua pequena filhinha canina Maggie. Ela foi uma mãe e irmã batalhadora, amorosa e exemplar.</p>
               </div>
             </div>
           </div>
@@ -682,14 +770,14 @@ footer .fn{
           <div class="topic-body">
             <div class="topic-body-content">
               <div class="topic-body-inner">
-                <p class="topic-full">Antes de partir, Arli realizou uma grande viagem à Europa ao lado do filho João, da nora Edivânia e da irmã Silvana. Percorreram Portugal (Lisboa), França (Paris), Itália (Veneza e Roma), Vaticano, Inglaterra (授权/Londres) e Irlanda (Cork). Foi uma despedida à altura de quem viveu com tanto gosto. Ao retornar, confirmou a suspeita de câncer, que viria a causar sua morte. Nas últimas semanas, teve ao seu lado a família e os filhos que vieram do exterior para estar com ela nesse momento de luta.</p>
+                <p class="topic-full">Antes de partir, Arli realizou uma grande viagem à Europa ao lado do filho João, da nora Edivânia e da irmã Silvana. Percorreram Portugal (Lisboa), França (Paris), Itália (Veneza e Roma), Vaticano, Inglaterra (Londres) e Irlanda (Cork). Foi uma despedida à altura de quem viveu com tanto gosto. Ao retornar, confirmou a suspeita de câncer, que viria a causar sua partida. Nas últimas semanas, teve ao seu lado a família e os filhos que vieram do exterior para estar com ela nesse momento de luta.</p>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-      <article class="topic" id="partida">
+      <article class="topic" id="Despedida">
         <div class="topic-inner">
           <button class="topic-heading-row" onclick="toggleTopic(this)">
             <div class="topic-heading-left">
@@ -701,7 +789,7 @@ footer .fn{
           <div class="topic-body">
             <div class="topic-body-content">
               <div class="topic-body-inner">
-                <p class="topic-full">Após uma vida como fumante, Arli partiu aos 61 anos, em 13 de junho de 2026, semanas depois de descobrir e enfrentar um câncer de pulmão em estágio avançado, mesmo tendo encerrado seu vício. Lutou bravamente e sem reclamar em nenhum momento, aceitando sua dura missão com serenidade. Ainda assim, encontrava forças para dar conforto a quem estava ao seu lado, com palavras de aceitação e amparo — fiel a si mesma até o fim.</p>
+                <p class="topic-full">Após uma vida como fumante, Arli partiu aos 61 anos, em 13 de junho de 2026, semanas depois de descobrir e enfrentar um câncer de pulmão em estágio avançado, mesmo tendo encerrado seu vício. Lutou bravamente e sem reclamar em nenhum momento, aceitando sua dura missão com serenidade. Ainda assim, encontrava forças para dar conforto a quem estava ao seu lado, com palavras de aceitação e amparo, sendo fiel a si mesma até o fim.</p>
               </div>
             </div>
           </div>
@@ -710,24 +798,101 @@ footer .fn{
     </div>
   </section>
 
+  <div class="mem-title-area animate">
+  <section class="mem-section" id="tree">
+    <h2 class="section-title">Árvore Genealógica</h2>
+</div>
+
+<div class="tree-container animate">
+  <div class="tree-level">
+    <div class="tree-level-title">Pais</div>
+    <div class="tree-group">
+      <div class="tree-member">
+        <img src="images/joao_bernardes.png" alt="João Bernardes" class="tree-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg>'">
+        <span class="tree-name">João Bernardes</span>
+      </div>
+      <div class="tree-member">
+        <img src="images/dalva_barcelos.png" alt="Dalva Barcelos" class="tree-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg>'">
+        <span class="tree-name">Dalva Barcelos</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tree-level">
+    <div class="tree-level-title">Irmãos</div>
+    <div class="tree-group">
+      <div class="tree-member">
+        <img src="images/rosanea.png" alt="Rosanea" class="tree-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg>'">
+        <span class="tree-name">Rosanea</span>
+      </div>
+      <div class="tree-member">
+        <img src="images/marli.png" alt="Marli" class="tree-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg>'">
+        <span class="tree-name">Marli</span>
+      </div>
+      <div class="tree-member">
+        <img src="images/sandra.png" alt="Sandra" class="tree-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg>'">
+        <span class="tree-name">Sandra</span>
+      </div>
+      <div class="tree-member highlight">
+        <img src="images/1.png" alt="Arli Pereira" class="tree-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg>'">
+        <span class="tree-name">Arli</span>
+      </div>
+      <div class="tree-member">
+        <img src="images/cleone.png" alt="Cleone" class="tree-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg>'">
+        <span class="tree-name">Cleone</span>
+      </div>
+      <div class="tree-member">
+        <img src="images/silvana.png" alt="Silvana" class="tree-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg>'">
+        <span class="tree-name">Silvana</span>
+      </div>
+      <div class="tree-member">
+        <img src="images/alessandro.png" alt="Alessandro" class="tree-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg>'">
+        <span class="tree-name">Alessandro</span>
+      </div>
+      <div class="tree-member">
+        <img src="images/carla.png" alt="Carla" class="tree-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><circle cx=\{12\} cy=\{8\} r=\{4\}/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg>'">
+        <span class="tree-name">Carla</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="tree-level">
+    <div class="tree-level-title">Filhos</div>
+    <div class="tree-group">
+      <div class="tree-member">
+        <img src="images/joao_augusto.png" alt="João Augusto" class="tree-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg>'">
+        <span class="tree-name">João Augusto</span>
+      </div>
+      <div class="tree-member">
+        <img src="images/luis_fernando.png" alt="Luis Fernando" class="tree-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg>'">
+        <span class="tree-name">Luis Fernando</span>
+      </div>
+      <div class="tree-member">
+        <img src="images/julio_cesar.png" alt="Julio Cesar" class="tree-avatar" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg>'">
+        <span class="tree-name">Julio Cesar</span>
+      </div>
+    </div>
+  </div>
+</div>
+
   <section class="mem-section" id="timeline">
     <h2 class="section-title">Linha do tempo</h2>
     <div class="timeline">
       <div class="tl-line"></div>
       <div class="tl-item"><div class="tl-date">Julho de 1964</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Nascimento</div><div class="tl-desc">Itapuranga, Goiás</div></div></div>
       <div class="tl-item"><div class="tl-date">≈ 1980</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Trabalho na APAE de Bambuí - MG</div><div class="tl-desc">Dedicação ao cuidado de pessoas com necessidades especiais</div></div></div>
-      <div class="tl-item"><div class="tl-date">Jan 1988</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Primeiro filho</div><div class="tl-desc">Nascimento de João Augusto</div></div></div>
-      <div class="tl-item"><div class="tl-date">Jan 1990</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Segundo filho</div><div class="tl-desc">Nascimento de Luis Fernando</div></div></div>
-      <div class="tl-item"><div class="tl-date">Jan 1991</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Terceiro filho</div><div class="tl-desc">Nascimento de Julio Cesar</div></div></div>
+      <div class="tl-item"><div class="tl-date">1988</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Primeiro filho</div><div class="tl-desc">Nascimento de João Augusto</div></div></div>
+      <div class="tl-item"><div class="tl-date">1990</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Segundo filho</div><div class="tl-desc">Nascimento de Luis Fernando</div></div></div>
+      <div class="tl-item"><div class="tl-date">1991</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Terceiro filho</div><div class="tl-desc">Nascimento de Julio Cesar</div></div></div>
       <div class="tl-item"><div class="tl-date">2001</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Co-funda a Truste Assessoria Empresarial</div><div class="tl-desc">Empreendedora, funda sua própria empresa</div></div></div>
       <div class="tl-item"><div class="tl-date">≈2002</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Conquista a casa própria</div><div class="tl-desc">Grande orgulho pessoal e familiar</div></div></div>
       <div class="tl-item"><div class="tl-date">≈2003</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Tira a carteira de motorista</div><div class="tl-desc">Ótima motorista — mas não gostava de carros manuais</div></div></div>
       <div class="tl-item"><div class="tl-date">2005</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Perda do filho Luis Fernando</div><div class="tl-desc">Dor que moldou sua força silenciosa e sua fé</div></div></div>
-      <div class="tl-item"><div class="tl-date">Anos 2000</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Perda de seu pai</div><div class="tl-desc">Uma ausência dolorosa e marcante que moldou sua força</div></div></div>
       <div class="tl-item"><div class="tl-date">≈2006</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Torna-se espírita</div><div class="tl-desc">Encontra no Espiritismo Kardecista consolo e compreensão</div></div></div>
-      <div class="tl-item"><div class="tl-date">Anos 2010</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Perda de sua mãe</div><div class="tl-desc">Mais uma grande partida enfrentada com resiliência silenciosa</div></div></div>
-      <div class="tl-item"><div class="tl-date">≈2013</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Filho mais velho muda-se</div><div class="tl-desc">João parte para construir sua vida independente</div></div></div>
+      <div class="tl-item"><div class="tl-date">≈2011</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Filho mais velho muda-se</div><div class="tl-desc">João parte para construir sua vida independente</div></div></div>
+      <div class="tl-item"><div class="tl-date">2013</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Perda de seu pai</div><div class="tl-desc">Uma ausência dolorosa e marcante que moldou sua força</div></div></div>
       <div class="tl-item"><div class="tl-date">≈2015</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Torna-se cuidadora de idosos</div><div class="tl-desc">Função exercida com profundo carinho e dedicação</div></div></div>
+       <div class="tl-item"><div class="tl-date">2019</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Perda de sua mãe</div><div class="tl-desc">Mais uma grande partida enfrentada com resiliência silenciosa</div></div></div>
       <div class="tl-item"><div class="tl-date">2023</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Muda-se para Bambuí (MG)</div><div class="tl-desc">Retorno à cidade que amava</div></div></div>
       <div class="tl-item"><div class="tl-date">2025</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Filho caçula muda-se para o exterior</div><div class="tl-desc">Ela abraçou Julio e disse para ele seguir seus sonhos e ser feliz</div></div></div>
       <div class="tl-item"><div class="tl-date">2026</div><div class="tl-dot"></div><div class="tl-content"><div class="tl-title">Primeira viagem internacional</div><div class="tl-desc">Portugal, França, Itália, Vaticano, Inglaterra e Irlanda</div></div></div>
@@ -736,7 +901,7 @@ footer .fn{
   </section>
 
   <section class="mem-section" id="memorias">
-    <h2 class="section-title">Mural de lembranças</h2>
+    <h2 class="section-title">Mural de Lembranças e Depoimentos</h2>
     <div class="wall-controls">
       <button class="wall-filter active" onclick="sortMemories('recent',this)">Mais recente</button>
       <button class="wall-filter" onclick="sortMemories('oldest',this)">Mais antigos</button>
@@ -775,13 +940,7 @@ footer .fn{
         </button>
         <div class="memory-body" aria-hidden="true">
           <div class="memory-text">
-            <p>A tia Arli era aquela pessoa que não tinha momento, hora nem lugar ruim. Tudo estava bom e maravilhoso e, se não estivesse, ela soltava suas piadas desbocadas e animava qualquer ambiente.</p>
-            <p>Eu me lembro da minha infância, de quando ela vinha me visitar e trazia aqueles vestidos de princesa, lindos e chiques. Além dos presentes, havia a sua presença, que era sempre o melhor de tudo.</p>
-            <p>Quando a Maggie chegou, ela veio conhecer a família em Bambuí. A tia trouxe uma caixinha cheia de lacinhos, ficava me mostrando e trocando os laços da Maggie o tempo todo.</p>
-            <p>Há três anos, ela se mudou para Bambuí, ficando mais perto de nós. Sempre me ajudou e foi uma rede de apoio constante.</p>
-            <p>En 2026, começamos um novo hobby: caça-palavras e CodyCross. Eu era apenas a aprendiz dela.</p>
-            <p>A tia sempre foi muito guerreira. Nunca se vitimizou diante das dificuldades da vida e raramente reclamava.</p>
-            <p>Sinto e sentirei para sempre a falta dela. Te amo para sempre, tia Arli.</p>
+            <p>A tia Arli era aquela pessoa que não tinha momento, hora nem lugar ruim. Tudo estava bom e maravilhoso e, se não estivesse, ela soltava suas piadas desbocadas e animava qualquer ambiente. Eu me lembro da minha infância, de quando ela vinha me visitar e trazia aqueles vestidos de princesa, lindos e chiques. Além dos presentes, havia a sua presença, que era sempre o melhor de tudo. Quando a Maggie chegou, ela veio conhecer a família em Bambuí. A tia trouxe uma caixinha cheia de lacinhos, ficava me mostrando e trocando os laços da Maggie o tempo todo. Também me levava para passear, conversava comigo e, às vezes, me fazia raiva por ficar me zoando. Kkk Há três anos, ela se mudou para Bambuí, ficando mais perto de nós e de mim. Comecei indo à casa dela para conhecer os "netos" (os cachorros), mas logo passei a frequentar o lugar todos os dias, até me mudar para São Paulo. Morei na casa dela por um tempo e, por mais que eu tenha passado por diversas dificuldades, ela e minha madrinha nunca soltaram a minha mão. Sempre me ajudaram muito e foram minha rede de apoio, mesmo a 570 km de distância. Com o tempo, voltei para Bambuí para passear e acabei ficando. A saudade era grande demais. Como sempre fez, tia Arli me "adotou" novamente, e eu passei a ir todos os dias à casa dela, sem falta. Eu dormia lá, comia aquela comida deliciosa, brincava, jogávamos caça-palavras, tirávamos o "soninho da beleza", como ela sempre dizia, ouvíamos música enquanto eu fazia massagem nela, comíamos besteiras e tomávamos MUITO milk-shake. O dela era sempre de flocos, e o meu, de Nutella. Mesmo tendo passado pouco tempo, já sinto falta da comida dela. Algumas das minhas favoritas eram: cupim, pão recheado, pizza, arroz soltinho com aquele feijão carioca suuuper cremoso, bem temperado e nada aguado, viu? Também tinha as carnes veganas para o Juju, os estrogonofes e, principalmente, o leite com mingau hiper mega doce que ela amava. E ainda tinha a coragem de dizer que não gostava de doce! kkkkk </p><p>Em 2026, começamos um novo hobby: caça-palavras e CodyCross. Em cinco minutos terminávamos uma página de caça-palavras. Já o CodyCross, um jogo de perguntas e respostas com curiosidades e conhecimentos gerais, ela sempre resolvia com facilidade. Eu era apenas a aprendiz dela. Kkk Nos finais de semana, a tia sempre saía da "dieta". Comprava pizza de frango com catupiry e de calabresa, sanduíches de cream cheese e milk-shake. Era um dia para cada coisa. Sem contar o estrogonofe de carne e os churrasquinhos que ela tanto amava. Quando ela precisava ir ao médico, eu era sua acompanhante. Ficávamos conversando, fazendo brincadeiras, julgando as pessoas de leve e planejando o que iríamos comer quando chegássemos em casa. E os dias de mercado com ela eram pura diversão: passávamos horas esperando ela decidir qual arroz levar e quais bolachas escolher. </p><p>No momento em que descobri a chegada do câncer, meu mundo paralisou. Como assim a minha tia estava com câncer, sendo que poucos dias antes ela estava tão feliz em sua viagem? Foi muito difícil para todos nós. Mas vê-la agora livre do sofrimento e ao lado do filho traz um pouco de alívio ao coração. A tia sempre foi muito guerreira. Nunca se vitimizou diante das dificuldades da vida e raramente reclamava. Lutou bravamente em busca da sua cura, mesmo que ela não tenha sido possível. Tenho muito orgulho de ser sobrinha de uma mulher tão forte, determinada e batalhadora. Sinto e sentirei para sempre a falta dela. Da nossa companheira de fofocas, risadas, piadas, conselhos e broncas. Mas, acima de tudo, sentirei falta do amor imenso que ela distribuía a todos ao seu redor. Te amo para sempre, tia Arli.</p><p>Sinto e sentirei para sempre a falta dela. Te amo para sempre, tia Arli.</p>
           </div>
         </div>
       </div>
