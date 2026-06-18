@@ -504,6 +504,64 @@ footer .fn{
   }
 }
 
+  /* ══ SEÇÃO DE DOAÇÕES ══ */
+.donation-section {
+  padding: 60px 16px;
+  background: var(--surface); /* Tom sutil de azul para diferenciar da seção anterior */
+  text-align: center;
+}
+.donation-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.donation-text {
+  font-family: 'Lora', serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--ink);
+  margin-bottom: 32px;
+  font-style: italic;
+}
+.donation-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.donation-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 140px;
+}
+.donation-logo-img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  filter: grayscale(100%) opacity(70%);
+  transition: all 0.3s ease;
+  background: var(--card);
+  padding: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--divider);
+}
+.donation-card:hover .donation-logo-img {
+  filter: grayscale(0%) opacity(100%);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(59,130,196,0.15);
+}
+.donation-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  margin-top: 12px;
+  text-transform: uppercase;
+}
+
 </style>
 </head>
 <body>
@@ -1027,6 +1085,41 @@ function sortMemories(order,btn){
   cards.forEach(function(c){container.appendChild(c);});
 }
 </script>
+
+  <section class="donation-section mem-section" id="doacoes">
+  <div class="donation-container">
+    
+    <div class="mem-title-area animate">
+      <span class="mem-subtitle">Inspiração</span>
+      <h2 class="mem-title">Multiplique o Bem</h2>
+    </div>
+
+    <p class="donation-text animate">
+      Faça do mundo um lugar melhor, assim como a Arli fez! Apoie uma instituição de caridade. 
+      Sugerimos algumas organizações de confiança logo abaixo, mas sinta-se à vontade para escolher uma de sua preferência. 
+      O mais importante é compartilhar amor e estender a mão a quem mais precisa.
+    </p>
+
+    <div class="donation-logos animate">
+      
+      <div class="donation-card">
+        <img src="images/asapac.png" alt="Logo ASAPAC" class="donation-logo-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><path d=\'M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z\'/></svg>'">
+        <span class="donation-name">ASAPAC</span>
+      </div>
+
+      <div class="donation-card">
+        <img src="images/apae.png" alt="Logo Apae Bambuí" class="donation-logo-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><circle cx=\'12\' cy=\'12\' r=\'10\'/><path d=\'M8 14s1.5 2 4 2 4-2 4-2\'/><line x1=\'9\' y1=\'9\' x2=\'9.01\' y2=\'9\'/><line x1=\'15\' y1=\'9\' x2=\'15.01\' y2=\'9\'/></svg>'">
+        <span class="donation-name">Apae Bambuí</span>
+      </div>
+
+      <div class="donation-card">
+        <img src="images/arca.png" alt="Logo Arca Bambuí" class="donation-logo-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'24\' height=\'24\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%23aaa\' stroke-width=\'1.5\'><path d=\'M12 5c-1.66 0-3 1.34-3 3 0 2 3 6 3 6s3-4 3-6c0-1.66-1.34-3-3-3zm0 4c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z\'/><path d=\'M2 20h20\'/></svg>'">
+        <span class="donation-name">Arca Bambuí</span>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 <footer>
   <span class="fn">Arli Pereira do Prado</span>
