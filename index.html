@@ -618,6 +618,38 @@ footer .fn{
   </div>
 </header>
 
+<!-- Player de Áudio Invisível com Autoplay Adaptativo -->
+<audio id="bg-music" loop>
+  <source src="musica-de-fundo.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const audio = document.getElementById('bg-music');
+    
+    // Configura o volume padrão para 30% (0.3 vai de 0.0 a 1.0)
+    audio.volume = 0.3;
+
+    // Função para tentar dar play
+    const startAudio = () => {
+      audio.play().then(() => {
+        // Se o autoplay funcionar, remove os ouvintes de evento
+        document.removeEventListener('click', startAudio);
+        document.removeEventListener('touchstart', startAudio);
+      }).catch(error => {
+        console.log("Autoplay bloqueado pelo navegador. Aguardando interação do usuário.");
+      });
+    };
+
+    // Tenta tocar imediatamente (funciona se o navegador permitir)
+    startAudio();
+
+    // Caso o navegador bloqueie, toca assim que o usuário clicar ou tocar na tela
+    document.addEventListener('click', startAudio);
+    document.addEventListener('touchstart', startAudio);
+  });
+</script>
+ 
 <nav class="sticky-nav" aria-label="Seções">
   <div class="nav-inner">
     <a class="nav-link" href="#sobre">Sobre</a>
